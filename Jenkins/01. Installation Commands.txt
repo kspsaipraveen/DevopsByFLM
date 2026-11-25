@@ -1,11 +1,10 @@
-Jenkins install commands?:
+Jenkins install commands
+=========================
 
-default port no for jenkins : 8080
+default port number for Jenkins: 8080
 
-jenkins use java 21+
+Jenkins uses Java 21+
 
-
-~~ yum install java-17-amazon-corretto -y ~~
 yum install java-21-amazon-corretto fontconfig -y
 sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/rpm-stable/jenkins.repo
 yum install jenkins -y
