@@ -1,0 +1,5 @@
+Todays tasks:
+
+
+1. whats the command to list out the files which are not being modified by last 7 days
+2. whats the command to list out the files which are more than 1 MB
