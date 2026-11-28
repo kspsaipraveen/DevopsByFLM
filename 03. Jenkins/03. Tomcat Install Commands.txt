@@ -7,7 +7,7 @@ replace current version with existing version.
 
 Note: please check always minimum java supported version for Jenkins software. ( asofnow, java 21+ )
 
-yum install java-17-amazon-corretto -y
+yum install java-21-amazon-corretto fontconfig -y
 
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.123/bin/apache-tomcat-9.0.123.tar.gz
 
