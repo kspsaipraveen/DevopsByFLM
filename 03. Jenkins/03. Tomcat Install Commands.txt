@@ -8,13 +8,21 @@ replace current version with existing version.
 Note: please check always minimum java supported version for Jenkins software. ( asofnow, java 21+ )
 
 yum install java-17-amazon-corretto -y
+
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.123/bin/apache-tomcat-9.0.123.tar.gz
+
 tar -zxvf apache-tomcat-9.0.123.tar.gz
-sed -i '56 a\<role rolename="manager-gui"/>' apache-tomcat-9.0.123/conf/tomcat-users.xml
-sed -i '57 a\<role rolename="manager-script"/>' apache-tomcat-9.0.123/conf/tomcat-users.xml
-sed -i '58 a\<user username="tomcat" password="admin" roles="manager-gui, manager-script"/>' apache-tomcat-9.0.123/conf/tomcat-users.xml
-sed -i '59 a\</tomcat-users>' apache-tomcat-9.0.123/conf/tomcat-users.xml
-sed -i '56d' apache-tomcat-9.0.123/conf/tomcat-users.xml
-sed -i '21d' apache-tomcat-9.0.123/webapps/manager/META-INF/context.xml
-sed -i '22d' apache-tomcat-9.0.123/webapps/manager/META-INF/context.xml
-sh apache-tomcat-9.0.123/bin/startup.sh
+
+cd apache-tomcat-9.0.123
+
+# Configure Tomcat roles and user
+sed -i '/<\/tomcat-users>/i\
+<role rolename="manager-gui"/>\
+<role rolename="manager-script"/>\
+<user username="tomcat" password="CHANGE_ME" roles="manager-gui,manager-script"/>' conf/tomcat-users.xml
+
+# Remove Manager IP restriction
+sed -i '/<Valve className="org.apache.catalina.valves.RemoteCIDRValve"/,/\/>/d' webapps/manager/META-INF/context.xml
+
+# Start Tomcat
+sh bin/startup.sh
