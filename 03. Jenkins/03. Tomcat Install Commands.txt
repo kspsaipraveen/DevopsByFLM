@@ -19,7 +19,7 @@ cd apache-tomcat-9.0.123
 sed -i '/<\/tomcat-users>/i\
 <role rolename="manager-gui"/>\
 <role rolename="manager-script"/>\
-<user username="tomcat" password="CHANGE_ME" roles="manager-gui,manager-script"/>' conf/tomcat-users.xml
+<user username="tomcat" password="admin" roles="manager-gui,manager-script"/>' conf/tomcat-users.xml
 
 # Remove Manager IP restriction
 sed -i '/<Valve className="org.apache.catalina.valves.RemoteCIDRValve"/,/\/>/d' webapps/manager/META-INF/context.xml
